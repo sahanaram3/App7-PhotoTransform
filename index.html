@@ -135,12 +135,25 @@
       <div id="messageDisplayArea"></div>
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
+     
+      <!-- making second canvas that will hold the modified version of the image-->
+      <!--setting an id for canvas to be able to access it later-->
+	     <!--style element creates border; without the border, canvas would just be white-->
+	     <!--#000000 represents the black color of the border-->
+      <canvas id="modifiedCanvas" width=600 height=500 style="border:1px solid #000000;"></canvas>
+     
+      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
+       
+        /* This script initiates the second canvas and puts the text on the canvas "modifiedCanvas" */
+        var secondCanvas = document.getElementById('modifiedCanvas');
+        var context = secondCanvas.getContext("2d");
+        context.font = '20 pt Calibri';
+        context.fillText("The modified image will go here", 10, 20);
       </script>
 
     </div><!-- /content -->
