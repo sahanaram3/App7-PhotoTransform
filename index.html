@@ -99,7 +99,16 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
+	  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+	  const pixels = imageData.data;
+	  
+	  pixels[0 + 0] = 255;
+	  pixels[0 + 1] = 255;
+	  pixels[0 + 2] = 255;
+	  pixels[0 + 3] = 255;
+	
+	  context.putImageData(imageData, 0, 0); 
+	  
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
           
