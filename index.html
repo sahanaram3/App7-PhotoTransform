@@ -102,11 +102,17 @@
 	  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 	  const pixels = imageData.data;
 	  
-	  pixels[0 + 0] = 240;
-	  pixels[0 + 1] = 240;
-	  pixels[0 + 2] = 240;
-	  pixels[0 + 3] = 240;
-	
+	  for(var i = 0; n = pixels.length; i < n; i += 4) {
+	  	var red = data[i];
+		var green = data[i + 1];
+		var blue = data[i + 2];
+		var alpha = data[i + 3];
+		  
+		red = 0;
+		green = 0;
+		alpha = 0;
+	  }
+		  
 	  context.putImageData(imageData, 0, 0); 
 	  
 	  drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
