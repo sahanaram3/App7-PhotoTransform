@@ -102,14 +102,13 @@
 	  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 	  const pixels = imageData.data;
 	  
-	  for(var i = 0; n = pixels.length; i < n; i += 4) {
+	  for(var i = 0, n = pixels.length; i < n; i += 4) {
 	  	var red = pixels[i];
 		var green = pixels[i + 1];
 		var blue = pixels[i + 2];
 		  
 		red = 0;
 		green = 0;
-		blue = 240;
 	  }
 		  
 	  context2.putImageData(imageData, 0, 0); 
