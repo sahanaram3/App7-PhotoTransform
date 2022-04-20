@@ -102,8 +102,8 @@
 	  var secondCanvas = document.getElementById('modifiedCanvas');
           var context2 = secondCanvas.getContext("2d");
 		
-	  const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-	  const pixels = imageData.data;
+	  var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+	  var pixels = imageData.data;
 	  
 	  for(var i = 0; i = pixels.length; i += 4) {
 	  	data[i] = 0;
