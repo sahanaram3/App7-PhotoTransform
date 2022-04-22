@@ -99,10 +99,14 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-	  var secondCanvas = document.getElementById('modifiedCanvas');
-          var context2 = secondCanvas.getContext("2d");
+	  
+	  
+          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
+          
+          var canvas2 = document.getElementById('myCanvas2');
+          var context2 = canvas2.getContext("2d");
 		
-	  var imageData = context.getImageData(0, 0, secondCanvas.width, secondCanvas.height);
+	  var imageData = context.getImageData(0,0, canvas2.width, canvas2.height);
 	  var data = imageData.data;
 	  
 	  for(var i = 0; i < data.length; i += 4) {
@@ -112,13 +116,7 @@
 	  }
 		  
 	  context2.putImageData(imageData, 0, 0); 
-	  
-	  drawImageIOSFix(context2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-	  
-          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          
-          
-          
+	            
           
         } // end of img.onload
         
@@ -165,8 +163,8 @@
         context.fillText("Original image will go here", 10, 20);
        
         /* This script initiates the second canvas and puts the text on the canvas "modifiedCanvas" */
-        var secondCanvas = document.getElementById('modifiedCanvas');
-        var context2 = secondCanvas.getContext("2d");
+        var canvas2 = document.getElementById('myCanvas2');
+        var context2 = canvas2.getContext("2d");
         context2.font = '20 pt Calibri';
 	context2.fillStyle = "black";
         context2.fillText("The modified image will go here", 10, 20);
