@@ -150,25 +150,25 @@
 
  <body>
   <div data-role="page">
-  <div data-role="header">
-  <h1>Primary Colors</h1></div><!-- /header -->
-  <div data-role="content">	
-  <h2>Push button to take picture.</h2>
-  <div>
-    Press orange button to create or choose image file:
-   <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
-   </div>
-  <div id="messageDisplayArea"></div>
+   <div data-role="header">
+   <h1>Primary Colors</h1></div><!-- /header -->
+   <div data-role="content">	
+    <h2>Push button to take picture.</h2>
+    <div>
+     Press orange button to create or choose image file:
+     <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
+    </div>
+    <div id="messageDisplayArea"></div>
       
-  <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+    <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
      
     <!-- making second canvas that will hold the modified version of the image-->
-      <!--setting an id for canvas to be able to access it later-->
-	     <!--style element creates border; without the border, canvas would just be white-->
-	     <!--#000000 represents the black color of the border-->
-      <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #000000;"></canvas>
+    <!--setting an id for canvas to be able to access it later-->
+    <!--style element creates border; without the border, canvas would just be white-->
+    <!--#000000 represents the black color of the border-->
+    <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #000000;"></canvas>
      
-      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
+    <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
