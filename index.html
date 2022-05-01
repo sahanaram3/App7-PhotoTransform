@@ -24,10 +24,12 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  blah, blah, blah,
+  The goal of this code is to conduct image analysis on a photograph by loading an image onto the canvas and outputting only the blue 
+  elements of the photograph on a second canvas. This is done by understanding the RGB formation of an image and accomplishing pixel-
+  by-pixel transformation on the photograph. 
  
   Known Issues:
-  blah, blah, blah, blah
+  N/A
 -->
 
  <head>
@@ -45,7 +47,7 @@
 
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
 */
- function detectVerticalSquash(img) {
+  function detectVerticalSquash(img) {
   var iw = img.naturalWidth, ih = img.naturalHeight;
   var canvas = document.createElement('canvas');
   canvas.width = 1;
@@ -76,7 +78,7 @@
  }
 
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
- window.onload = function() {
+  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
@@ -103,18 +105,29 @@
 	  
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
+	  /* creating new canvas and new context that takes in the ID 'myCanvas2' for the box that will display blue elements */
+	  /* must create new context since it takes in different parameters */
           var canvas2 = document.getElementById('myCanvas2');
           var context2 = canvas2.getContext("2d");
-		
+	
+	  /* imageData variable uses width and height of canvas 2 and 0,0 for other parameters */
+	  /* imageData being loaded into a variable data that will store the RGB value for later manipulation */
 	  var imageData = context.getImageData(0,0, canvas2.width, canvas2.height);
 	  var data = imageData.data;
 	  
+          /* for loop goes through each pixel by interating pixels row by row since 4 is added to i each time */
+	  /* i is a variable in the for loop that is associated with location in for loop */
+	  /* 4 possible colors (red, blue, green, cyan), so 4 possible values */
+	  /* can manipulate color by resetting value of data at the particular location of the pixel */
+	  /* i < data.length serves as stopping point for ongoing loop to not exceed the number of pixels in data set */
 	  for(var i = 0; i < data.length; i += 4) {
 	  	data[i] = 0;
 		data[i + 1] = 0;
+		/* setting all values that are NOT blue equal to 0 */
+		/* cyan color not as relevant --> must set red and green to 0 so only blue is displayed */
 		
 	  }
-		  
+	  /* stores new data for display */	  
 	  context2.putImageData(imageData, 0, 0); 
 	            
           
@@ -137,19 +150,19 @@
 
  <body>
   <div data-role="page">
-    <div data-role="header">
-    <h1>Primary Colors</h1></div><!-- /header -->
-    <div data-role="content">	
-      <h2>Push button to take picture.</h2>
-      <div>
-        Press orange button to create or choose image file:
-        <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
-      </div>
-      <div id="messageDisplayArea"></div>
+  <div data-role="header">
+  <h1>Primary Colors</h1></div><!-- /header -->
+  <div data-role="content">	
+  <h2>Push button to take picture.</h2>
+  <div>
+    Press orange button to create or choose image file:
+   <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
+   </div>
+  <div id="messageDisplayArea"></div>
       
-      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+  <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
      
-      <!-- making second canvas that will hold the modified version of the image-->
+    <!-- making second canvas that will hold the modified version of the image-->
       <!--setting an id for canvas to be able to access it later-->
 	     <!--style element creates border; without the border, canvas would just be white-->
 	     <!--#000000 represents the black color of the border-->
@@ -163,6 +176,7 @@
         context.fillText("Original image will go here", 10, 20);
        
         /* This script initiates the second canvas and puts the text on the canvas "modifiedCanvas" */
+	/* must create new canvas AND context to store new data for modified image */
         var canvas2 = document.getElementById('myCanvas2');
         var context2 = canvas2.getContext("2d");
         context2.font = '20 pt Calibri';
